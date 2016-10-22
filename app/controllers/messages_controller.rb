@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
    else
     
      render 'edit'
-  end
+   end
   end
   def destroy
     @message.destroy
@@ -28,12 +28,13 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to root_path , notice: 'メッセージを保存しました'
     else
-      #メッセージが保存できなかった時
+     #メッセージが保存できなかった時
      @messages = Message.all
      flash.now[:alert] = "メッセージの保存に失敗しました。"
      render 'index'
     end
-   end
+  end
+  
   private
   def message_params
     params.require(:message).permit(:name, :body)
